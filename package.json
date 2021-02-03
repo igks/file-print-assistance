@@ -1,0 +1,17 @@
+{
+  "name": "print-assistance",
+  "version": "1.0.0",
+  "description": "This application use to assist user to select desired file for print",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "I Gusti Kade Sugiantara",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.2",
+    "electron-reloader": "^1.2.0"
+  }
+}

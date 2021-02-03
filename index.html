@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Print Assistance</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Welcome to your print assistance application!</h1>
+    <h3>Please select your folder path, then select the file you want to print</h3>
+    <div class="path-container">
+      <input id="myFolder" type="file" webkitdirectory hidden onchange="handlePathChange()"/>
+      <input id="path-input" type="text" class="path-input" readonly />
+      <button id="browse" class="btn-browse" onclick="browse()">Browse</button>
+    </div>
+    <div class="main-list-container">
+
+      <div class="list-container">
+        <div id="resource" class="selection-list">
+          <h3 >Source</h3>
+          <hr>
+        </div>
+        <div class="separator"></div>
+        <div id="selected-file" class="selection-list">
+          <div class="selection-header">
+            <h3>File to be print</h3>
+            <button class="btn-clear" onclick="clearSelection()">Clear Selection</button>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <button class="btn-print" onclick="handlePrint()">Print</button>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
