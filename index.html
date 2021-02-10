@@ -18,13 +18,22 @@
 
       <div class="list-container">
         <div id="resource" class="selection-list">
-          <h3 >Source</h3>
+          <div class="selection-header">
+            <div>
+              <h3>Source</h3>
+              <small>* click the file name to select the file</small>
+            </div>
+          </div>
           <hr>
         </div>
         <div class="separator"></div>
         <div id="selected-file" class="selection-list">
           <div class="selection-header">
-            <h3>File to be print</h3>
+            <div style="display: flex; flex-direction: column;">
+              <h3>File to be print</h3>
+              <small>* click the file name to remove the file</small>
+              <small>* define the page in input box</small>
+            </div>
             <button class="btn-clear" onclick="clearSelection()">Clear Selection</button>
           </div>
           <hr>

@@ -87,7 +87,22 @@ body{
   background-color: orange;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
+}
+.selected-list-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-bottom: 1px solid gray;
+  border-radius: 10px;
+}
+.page-selection{
+  height: 25px;
+  border: 0.5px solid gray;
+  border-radius: 5px;
 }

@@ -55,8 +55,13 @@ function renderFileList() {
 }
 
 function selectFile(index) {
-  selectedArray.push(resourceArray[index]);
-  renderSelectedList();
+  const existingFile = selectedArray.filter(
+    (file) => file.name == resourceArray[index].name
+  );
+  if (existingFile.length === 0) {
+    selectedArray.push(resourceArray[index]);
+    renderSelectedList();
+  }
 }
 
 function renderSelectedList() {
@@ -67,14 +72,46 @@ function renderSelectedList() {
 
   let selectedUlComponent = document.createElement("ul");
   selectedUlComponent.setAttribute("id", "selected-ul");
-  selectedArray.map((file) => {
+  selectedArray.map((file, index) => {
     let selectedList = document.createElement("li");
     selectedList.classList.add("list");
-    selectedList.innerText = file.name;
-    selectedUlComponent.append(selectedList);
+    selectedList.addEventListener("click", function () {
+      unSelectList(index);
+    });
+
+    let div = document.createElement("div");
+    div.classList.add("selected-list-container");
+    let p = document.createElement("p");
+    p.classList.add("list");
+    p.addEventListener("click", function () {
+      unSelectList(index);
+    });
+    p.innerText = file.name;
+    div.append(p);
+    let input = document.createElement("input");
+    input.classList.add("page-selection");
+    if (file.page != null) {
+      input.value = file.page;
+    }
+    input.addEventListener("change", function (event) {
+      updatePage(event, index);
+    });
+    div.append(input);
+
+    // selectedList.innerText = file.name;
+    selectedUlComponent.append(div);
   });
 
   selectedContainer.append(selectedUlComponent);
+}
+
+function updatePage(event, index) {
+  selectedArray[index].page = event.target.value;
+}
+
+function unSelectList(index) {
+  selectedArray.splice(index, 1);
+  renderSelectedList();
 }
 
 function clearSelection() {
@@ -89,6 +126,6 @@ function handlePrint() {
   }
 
   selectedArray.map((file) => {
-    console.log(file.name);
+    console.table(file.name, file.path, file.page);
   });
 }
