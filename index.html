@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Welcome to your print assistance application!</h1>
-    <h3>Please select your folder path, then select the file you want to print</h3>
+    <h1 style="margin: 0;">Welcome to your print assistance application</h1>
+    <h4 style="margin: 0; margin-bottom: 30px;">Beta version, only support pdf file (.pdf)</h4>
+    <h3 style="margin: 0;">Click browse to open your folder, then select desired file</h3>
     <div class="path-container">
       <input id="myFolder" type="file" webkitdirectory hidden onchange="handlePathChange()"/>
       <input id="path-input" type="text" class="path-input" readonly />

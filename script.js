@@ -1,3 +1,5 @@
+const ptp = require("pdf-to-printer");
+
 let inputFolder = document.getElementById("myFolder");
 let path = "";
 let resourceArray = [];
@@ -67,7 +69,7 @@ function renderSelectedList() {
 
   let selectedUlComponent = document.createElement("ul");
   selectedUlComponent.setAttribute("id", "selected-ul");
-  selectedArray.map((file) => {
+  selectedArray.map((file, index) => {
     let selectedList = document.createElement("li");
     selectedList.classList.add("list");
     selectedList.addEventListener("click", function () {
@@ -81,6 +83,11 @@ function renderSelectedList() {
   selectedContainer.append(selectedUlComponent);
 }
 
+function unSelectList(index) {
+  selectedArray.splice(index, 1);
+  renderSelectedList();
+}
+
 function clearSelection() {
   selectedArray = [];
   renderSelectedList();
@@ -92,7 +99,15 @@ function handlePrint() {
     return;
   }
 
-  selectedArray.map((file) => {
-    console.table(file.name, file.path);
+  let printedFile = 0;
+  selectedArray.map(async (file) => {
+    await ptp.print(file.path);
+    printedFile++;
   });
+
+  if (printedFile > 0) {
+    alert(
+      printedFile + " of " + selectedArray.length + " file printed successfully"
+    );
+  }
 }
