@@ -12,7 +12,7 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-  win.removeMenu();
+  // win.removeMenu();s
   win.loadFile("index.html");
 }
 app.on("ready", createWindow);

@@ -70,6 +70,10 @@ function renderSelectedList() {
   selectedArray.map((file) => {
     let selectedList = document.createElement("li");
     selectedList.classList.add("list");
+    selectedList.addEventListener("click", function () {
+      unSelectList(index);
+    });
+
     selectedList.innerText = file.name;
     selectedUlComponent.append(selectedList);
   });
@@ -89,6 +93,6 @@ function handlePrint() {
   }
 
   selectedArray.map((file) => {
-    console.log(file.name);
+    console.table(file.name, file.path);
   });
 }
