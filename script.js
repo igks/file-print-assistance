@@ -57,8 +57,13 @@ function renderFileList() {
 }
 
 function selectFile(index) {
-  selectedArray.push(resourceArray[index]);
-  renderSelectedList();
+  const existingFile = selectedArray.filter(
+    (file) => file.name == resourceArray[index].name
+  );
+  if (existingFile.length === 0) {
+    selectedArray.push(resourceArray[index]);
+    renderSelectedList();
+  }
 }
 
 function renderSelectedList() {
