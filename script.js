@@ -23,7 +23,7 @@ function handlePathChange() {
     return;
   }
   getAllFile();
-  renderFileList();
+  renderFileList(resourceArray);
 }
 
 function getAllFile() {
@@ -36,7 +36,7 @@ function getAllFile() {
   });
 }
 
-function renderFileList() {
+function renderFileList(resource) {
   let ulListContainer = document.querySelector("#resource-ul");
   if (ulListContainer != null) {
     ulListContainer.remove();
@@ -44,7 +44,7 @@ function renderFileList() {
   let ulComponent = document.createElement("ul");
   ulComponent.setAttribute("id", "resource-ul");
 
-  resourceArray.map((file, index) => {
+  resource.map((file, index) => {
     let list = document.createElement("li");
     list.classList.add("list");
     list.addEventListener("click", function () {
@@ -114,5 +114,18 @@ function handlePrint() {
     alert(
       printedFile + " of " + selectedArray.length + " file printed successfully"
     );
+  }
+}
+
+function filterSource(event) {
+  let keyword = event.target.value;
+
+  if (keyword === "") {
+    renderFileList(resourceArray);
+  } else {
+    let filteredSource = resourceArray.filter((file) =>
+      file.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+    renderFileList(filteredSource);
   }
 }
