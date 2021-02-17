@@ -48,7 +48,7 @@ function renderFileList(resource) {
     let list = document.createElement("li");
     list.classList.add("list");
     list.addEventListener("click", function () {
-      selectFile(index);
+      selectFile(file);
     });
     list.innerText = file.name;
     ulComponent.append(list);
@@ -56,12 +56,12 @@ function renderFileList(resource) {
   resourceContainer.append(ulComponent);
 }
 
-function selectFile(index) {
+function selectFile(newFile) {
   const existingFile = selectedArray.filter(
-    (file) => file.name == resourceArray[index].name
+    (file) => file.name == newFile.name
   );
   if (existingFile.length === 0) {
-    selectedArray.push(resourceArray[index]);
+    selectedArray.push(newFile);
     renderSelectedList();
   }
 }
